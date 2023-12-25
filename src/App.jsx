@@ -1,5 +1,7 @@
 import { useCallback, useReducer } from "react";
 import CheckUseCallback from "./component/checkUseCallback";
+import Couter from "./component/Couter";
+import Memo from "./component/Memo";
 
 function App() {
   const INCREMENT = "INCREMENT";
@@ -14,21 +16,24 @@ function App() {
         return { count: state.count + action.payload };
       case DECREMENT:
         return { count: state.count - action.payload };
-
       default:
         return state;
     }
   }
   const incrementCount = useCallback(() => {
     dispatch({ type: INCREMENT, payload: 1 });
-  }, [state.count]);
+  }, []);
   const decrementCount = useCallback(() => {
     dispatch({ type: DECREMENT, payload: 1 });
-  }, [state.count]);
+  }, []);
   return (
     <>
-      <p>Count: {state.count}</p>
-      <CheckUseCallback incrementCount={incrementCount}  decrementCount={decrementCount} state={state} />
+      <Memo />
+      <Couter count={state.count} />
+      <CheckUseCallback
+        incrementCount={incrementCount}
+        decrementCount={decrementCount}
+      />
       <hr />
     </>
   );
