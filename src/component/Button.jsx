@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 
+import { memo } from "react";
 
 
 
-function Button({ click,children }) {
- 
+
+function Button({ onclick,children }) {
+  
 
   return (
     <>
-      <button onClick={click}>{children}</button>
+      <button onClick={onclick}>{children}</button>
     </>
   );
 }
-export default Button;
+export default  memo(Button);

@@ -1,14 +1,15 @@
-
+import { memo } from "react";
 import Button from "./Button";
 
-function CheckUseCallback({ decrementCount, incrementCount, state }) {
-  console.log(state);
+function CheckUseCallback({ decrementCount, incrementCount }) {
+  console.log("re-render");
+
   return (
     <div>
-      <Button click={incrementCount}>Increment</Button>
-      <Button click={decrementCount}>Decremen</Button>
+      <Button onclick={incrementCount}>Increment</Button>
+      <Button onclick={decrementCount}>Decremen</Button>
     </div>
   );
 }
 
-export default CheckUseCallback;
+export default memo(CheckUseCallback);
