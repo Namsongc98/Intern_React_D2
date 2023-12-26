@@ -3,6 +3,7 @@ import CheckUseCallback from "./component/checkUseCallback";
 import Counter from "./component/Counter";
 import Memo from "./component/Memo";
 import UseMemoDemo from "./component/UseMemoDemo";
+import useButtom from "./hook/useButtom";
 
 function App() {
   const INCREMENT = "INCREMENT";
@@ -21,19 +22,17 @@ function App() {
         return state;
     }
   }
-  const incrementCount = useCallback(() => {
-    dispatch({ type: INCREMENT, payload: 1 });
-  }, []);
-  const decrementCount = useCallback(() => {
-    dispatch({ type: DECREMENT, payload: 1 });
-  }, []);
+
+  const incrementCount = useButtom(INCREMENT,dispatch)
+  const decrementCount = useButtom(DECREMENT,dispatch);
+
   return (
     <>
       <Memo />
       <Counter count={state.count} />
       <CheckUseCallback
-        incrementCount={incrementCount}
-        decrementCount={decrementCount}
+        incrementCount={incrementCount.handleDispatch}
+        decrementCount={decrementCount.handleDispatch}
       />
       <hr />
       <UseMemoDemo />
