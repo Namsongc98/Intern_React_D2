@@ -1,7 +1,8 @@
 import { useCallback, useReducer } from "react";
 import CheckUseCallback from "./component/checkUseCallback";
-import Couter from "./component/Couter";
+import Counter from "./component/Counter";
 import Memo from "./component/Memo";
+import UseMemoDemo from "./component/UseMemoDemo";
 
 function App() {
   const INCREMENT = "INCREMENT";
@@ -29,12 +30,13 @@ function App() {
   return (
     <>
       <Memo />
-      <Couter count={state.count} />
+      <Counter count={state.count} />
       <CheckUseCallback
         incrementCount={incrementCount}
         decrementCount={decrementCount}
       />
       <hr />
+      <UseMemoDemo/>
     </>
   );
 }
