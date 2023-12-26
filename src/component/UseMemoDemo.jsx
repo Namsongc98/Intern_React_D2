@@ -1,44 +1,36 @@
 import { useMemo, useRef, useState } from "react";
 import Button from "./Button";
-import Input from "./Input";  
+import Input from "./Input";
+import useInput from "../hook/useInput";
 
 function UseMemoDemo() {
-  const [product, setProduct] = useState("");
-  const [price, setPrice] = useState(0);
   const [list, setList] = useState([]);
+  const valueProduct = useInput("");
+  const valuePrice = useInput();
   const ref = useRef(null);
 
   function handleCount() {
     setList([
       ...list,
       {
-        product,
-        price: +price,
+        product: valueProduct.value,
+        price: +valuePrice.value,
       },
     ]);
-    console.log(ref);
     ref.current.focus();
   }
-
   const total = useMemo(() => {
     const resul = list.reduce((resul, item) => {
       return resul + item.price;
     }, 0);
     return resul;
   }, [list]);
-  function getProduct(e) {
-    setProduct(e.target.value);
-  }
-
-  function getPrice(e) {
-    setPrice(e.target.value);
-  }
 
   return (
     <>
-      <Input value={product} onChange={getProduct} ref={ref} />
+      <Input {...valueProduct} ref={ref} />
       <br />
-      <Input value={price} onChange={getPrice} />
+      <Input {...valuePrice} />
       <br />
       <Button onclick={handleCount}> tổng </Button>
       <br />
