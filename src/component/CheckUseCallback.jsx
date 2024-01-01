@@ -2,7 +2,6 @@ import { memo } from "react";
 import Button from "./Button";
 
 function CheckUseCallback({ decrementCount, incrementCount }) {
-console.log("re")
   return (
     <div>
       <Button onclick={incrementCount}>Increment</Button>

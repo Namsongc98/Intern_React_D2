@@ -1,9 +1,11 @@
-import { useCallback, useReducer } from "react";
+import { useReducer } from "react";
 import CheckUseCallback from "./component/checkUseCallback";
 import Counter from "./component/Counter";
 import Memo from "./component/Memo";
 import UseMemoDemo from "./component/UseMemoDemo";
 import useButtom from "./hook/useButtom";
+import HelloContext from "./component/HelloContext";
+import Redux from "./component/Redux";
 
 function App() {
   const INCREMENT = "INCREMENT";
@@ -23,8 +25,8 @@ function App() {
     }
   }
 
-  const incrementCount = useButtom(INCREMENT,dispatch)
-  const decrementCount = useButtom(DECREMENT,dispatch);
+  const incrementCount = useButtom(INCREMENT, dispatch);
+  const decrementCount = useButtom(DECREMENT, dispatch);
 
   return (
     <>
@@ -36,6 +38,9 @@ function App() {
       />
       <hr />
       <UseMemoDemo />
+      <HelloContext />
+      <hr />
+      <Redux />
     </>
   );
 }

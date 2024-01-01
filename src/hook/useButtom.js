@@ -1,12 +1,19 @@
 import { useCallback } from "react";
-
-function useButtom(type,dispatch) {
- const handleDispatch = useCallback(() => {
+import { useDispatch } from "react-redux";
+import { actionAddTodo } from "../store/action/action";
+function useButtom(type, dispatch) {
+  const handleDispatch = useCallback(() => {
     dispatch({ type, payload: 1 });
   }, []);
+
+  const dispatchRedux = useDispatch();
+  const handleDispatchRedux = function ( payload) {
+    dispatchRedux(actionAddTodo( payload));
+  };
   return {
-    handleDispatch
-  }
+    handleDispatch,
+    handleDispatchRedux,
+  };
 }
 
 export default useButtom;
